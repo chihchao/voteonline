@@ -1,0 +1,157 @@
+<div id="voteonline">
+<hr />
+
+<ul id="route">
+<{foreach from=$route item=node name=route}>
+	<li <{if $smarty.foreach.route.first}>id="route0"<{else}>class="route1"<{/if}>><a href="<{$node.path}>" title="<{$node.title}>"><{$node.title}></a></li>
+<{/foreach}>
+</ul>
+
+<ul id="sublink">
+<{foreach from=$sublink item=link name=sublink}>
+	<li><a href="<{$link.path}>" title="<{$link.title}>"><{$link.title}></a></li>
+<{/foreach}>
+</ul>
+
+<hr />
+
+<div id="vtol_content">
+
+<h2><{$module.name}></h2>
+
+<h3><{$page.title}></h3>
+
+<form method="post" action="<{$smarty.server.REQUEST_URI}>">
+<fieldset>
+<legend>
+<{$page.title}>
+</legend>
+
+<dl>
+<dt><label for="title"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTTITLE}></label></dt>
+<dd>
+<input type="text" id="title" class="inputlengthst" name="title" value="<{$election_setting.title}>" />
+</dd>
+<dt><label for="check_bg_yr"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTCHKBG}></label></dt>
+<dd>
+<select name="check_bg_yr">
+<{html_options output=$page.yr_options values=$page.yr_options selected=$page.yr.chkbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_YEAR}>&nbsp;
+<select name="check_bg_mt">
+<{html_options output=$page.mt_options values=$page.mt_options selected=$page.mt.chkbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MONTH}>&nbsp;
+<select name="check_bg_dy">
+<{html_options output=$page.dy_options values=$page.dy_options selected=$page.dy.chkbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DAY}>&nbsp;
+<select name="check_bg_hr">
+<{html_options output=$page.hr_options values=$page.hr_options selected=$page.hr.chkbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_HOUR}>&nbsp;
+<select name="check_bg_mn">
+<{html_options output=$page.mn_options values=$page.mn_options selected=$page.mn.chkbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MINUTE}>
+</dd>
+<dt><label for="check_ed_yr"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTCHKED}></label></dt>
+<dd>
+<select name="check_ed_yr">
+<{html_options output=$page.yr_options values=$page.yr_options selected=$page.yr.chked}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_YEAR}>&nbsp;
+<select name="check_ed_mt">
+<{html_options output=$page.mt_options values=$page.mt_options selected=$page.mt.chked}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MONTH}>&nbsp;
+<select name="check_ed_dy">
+<{html_options output=$page.dy_options values=$page.dy_options selected=$page.dy.chked}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DAY}>&nbsp;
+<select name="check_ed_hr">
+<{html_options output=$page.hr_options values=$page.hr_options selected=$page.hr.chked}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_HOUR}>&nbsp;
+<select name="check_ed_mn">
+<{html_options output=$page.mn_options values=$page.mn_options selected=$page.mn.chked}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MINUTE}>
+</dd>
+<dt><label for="vote_bg_yr"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTVTBG}></label></dt>
+<dd>
+<select name="vote_bg_yr">
+<{html_options output=$page.yr_options values=$page.yr_options selected=$page.yr.vtbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_YEAR}>&nbsp;
+<select name="vote_bg_mt">
+<{html_options output=$page.mt_options values=$page.mt_options selected=$page.mt.vtbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MONTH}>&nbsp;
+<select name="vote_bg_dy">
+<{html_options output=$page.dy_options values=$page.dy_options selected=$page.dy.vtbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DAY}>&nbsp;
+<select name="vote_bg_hr">
+<{html_options output=$page.hr_options values=$page.hr_options selected=$page.hr.vtbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_HOUR}>&nbsp;
+<select name="vote_bg_mn">
+<{html_options output=$page.mn_options values=$page.mn_options selected=$page.mn.vtbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MINUTE}>
+</dd>
+<dt><label for="vote_ed_yr"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTVTED}></label></dt>
+<dd>
+<select name="vote_ed_yr">
+<{html_options output=$page.yr_options values=$page.yr_options selected=$page.yr.vted}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_YEAR}>&nbsp;
+<select name="vote_ed_mt">
+<{html_options output=$page.mt_options values=$page.mt_options selected=$page.mt.vted}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MONTH}>&nbsp;
+<select name="vote_ed_dy">
+<{html_options output=$page.dy_options values=$page.dy_options selected=$page.dy.vted}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DAY}>&nbsp;
+<select name="vote_ed_hr">
+<{html_options output=$page.hr_options values=$page.hr_options selected=$page.hr.vted}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_HOUR}>&nbsp;
+<select name="vote_ed_mn">
+<{html_options output=$page.mn_options values=$page.mn_options selected=$page.mn.vted}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MINUTE}>
+</dd>
+<dt><label for="bulletin_bg_yr"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTBLTBG}></label></dt>
+<dd>
+<select name="bulletin_bg_yr">
+<{html_options output=$page.yr_options values=$page.yr_options selected=$page.yr.bltbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_YEAR}>&nbsp;
+<select name="bulletin_bg_mt">
+<{html_options output=$page.mt_options values=$page.mt_options selected=$page.mt.bltbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MONTH}>&nbsp;
+<select name="bulletin_bg_dy">
+<{html_options output=$page.dy_options values=$page.dy_options selected=$page.dy.bltbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DAY}>&nbsp;
+<select name="bulletin_bg_hr">
+<{html_options output=$page.hr_options values=$page.hr_options selected=$page.hr.bltbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_HOUR}>&nbsp;
+<select name="bulletin_bg_mn">
+<{html_options output=$page.mn_options values=$page.mn_options selected=$page.mn.bltbg}>
+</select>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MINUTE}>
+</dd>
+</dl>
+<input type="submit" value="<{$smarty.const._SEND}>" /><input type="hidden" name="submit" value="1" />
+</fieldset>
+</form>
+
+</div>
+<hr />
+</div>

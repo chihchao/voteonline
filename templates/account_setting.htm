@@ -1,0 +1,67 @@
+<div id="voteonline">
+<hr />
+
+<ul id="route">
+<{foreach from=$route item=node name=route}>
+	<li <{if $smarty.foreach.route.first}>id="route0"<{else}>class="route1"<{/if}>><a href="<{$node.path}>" title="<{$node.title}>"><{$node.title}></a></li>
+<{/foreach}>
+</ul>
+
+<ul id="sublink">
+<{foreach from=$sublink item=link name=sublink}>
+	<li><a href="<{$link.path}>" title="<{$link.title}>"><{$link.title}></a></li>
+<{/foreach}>
+</ul>
+
+<hr />
+
+<h2><{$module.name}></h2>
+
+<h3><{$page.title}></h3>
+
+<div id="contents_content">
+
+<{if $page.settinged}>
+
+<ul id="voter_1">
+<{foreach from=$account item=act name=acts}>
+<li>[<a href="account_envote.php?action=en&actid=<{$act.id}>" title="<{$smarty.const._MI_VOTEOL_ACTSETTING_ENVOTE}>"><{$smarty.const._MI_VOTEOL_ACTSETTING_ENVOTE}></a>][<a href="account_envote.php?action=un&actid=<{$act.id}>" title="<{$smarty.const._MI_VOTEOL_ACTSETTING_UNVOTE}>"><{$smarty.const._MI_VOTEOL_ACTSETTING_UNVOTE}></a>]
+<{if $act.status}>
+&nbsp;<{$act.nb}>&nbsp;<{$smarty.const._MI_VOTEOL_ACTSETTING_NB}>&nbsp;=&nbsp;<{$act.passwd}>
+<{else}>
+&nbsp;<strike><{$act.nb}>&nbsp;<{$smarty.const._MI_VOTEOL_ACTSETTING_NB}></strike>
+<{/if}>
+</li>
+<{if $smarty.foreach.acts.iteration == $page.std_numbers_helf}></ul><ul id="voter_2"><{/if}>
+<{/foreach}>
+</ul>
+
+<{else}>
+
+<form method="post" action="<{$smarty.server.REQUEST_URI}>">
+<fieldset>
+<legend>
+<{$page.title}>
+</legend>
+
+<p class="attention"><{$smarty.const._MI_VOTEOL_ACTSETTING_SETTING_DESC}></p>
+
+<ul id="voter_1">
+<{section name=voter loop=$page.std_numbers+1 start=1 step=1}>
+<li><input type="checkbox" name="nb[]" value="<{$smarty.section.voter.iteration}>" />&nbsp;<{$smarty.section.voter.iteration}>&nbsp;<{$smarty.const._MI_VOTEOL_ACTSETTING_NB}></li>
+<{if $smarty.section.voter.iteration == $page.std_numbers_helf}></ul><ul id="voter_2"><{/if}>
+<{/section}>
+</ul>
+
+<div class="clear"></div>
+<input type="hidden" name="submit" value="1" />
+<input type="submit" value="<{$smarty.const._SEND}>" />
+
+</fieldset>
+</form>
+
+<{/if}>
+
+</div>
+<hr />
+</div>

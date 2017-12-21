@@ -1,0 +1,170 @@
+<div id="voteonline">
+<hr />
+
+<ul id="route">
+<{foreach from=$route item=node name=route}>
+	<li <{if $smarty.foreach.route.first}>id="route0"<{else}>class="route1"<{/if}>><a href="<{$node.path}>" title="<{$node.title}>"><{$node.title}></a></li>
+<{/foreach}>
+</ul>
+
+<ul id="sublink">
+<{foreach from=$sublink item=link name=sublink}>
+	<li><a href="<{$link.path}>" title="<{$link.title}>"><{$link.title}></a></li>
+<{/foreach}>
+</ul>
+
+<hr />
+
+<h2><{$module.name}></h2>
+
+<h3><{$page.title}></h3>
+
+<div id="contents_content">
+
+<p id="system_time"><{$smarty.const._MI_VOTEOL_INDEX_SYSTEMTIME}><{$page.system_time}></p>
+
+<{if $page.packaged}><p id="packaged_desc"><{$smarty.const._MI_VOTEOL_ELCT_PACKAGED_DESC}></p><{/if}>
+
+<{if $election_setting.bulletin != '' && $page.period.bulletin}>
+<h4><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTBLT}></h4>
+<p id="bulletin"><{$election_setting.bulletin}></p>
+<{/if}>
+
+<h4><{$smarty.const._MI_VOTEOL_ELCT_SUBTITLE_RESULT}></h4>
+<{if $page.period.bulletin}>
+<{foreach from=$election_setting.tpcdd item=tp key=tpid}>
+<table>
+<caption><{$tp.types}><{$smarty.const._MI_VOTEOL_ELCT_SUBTITLE_RESULT}></caption>
+<{foreach from=$tp.candidate item=cdd key=cddid}>
+<tr>
+<td class="nowrap"><{$cdd.nb}></td>
+<td class="nowrap"><{$cdd.name}></td>
+<td class="tdmain"><img src="images/spacer.gif"  width="<{$cdd.votes}>" height="10" border="0" alt="votes: <{$cdd.votes}>" />(<{$cdd.votes}>)</td>
+</tr>
+<{/foreach}>
+<tr>
+<td></td>
+<td><{$smarty.const._MI_VOTEOL_ELCT_VOTENONE}></td>
+<td><img src="images/spacer.gif"  width="<{$tp.vote_none}>" height="10" border="0" alt="votes: <{$tp.vote_none}>" />(<{$tp.vote_none}>)</td>
+</tr>
+</table>
+<{/foreach}>
+<{/if}>
+
+<h4><{$smarty.const._MI_VOTEOL_ELCT_SUBTITLE_DESC}></h4>
+
+<dl>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTTITLE}></dt>
+<dd><{$election_setting.title}></dd>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTCHKBG}></dt>
+<dd><{$election_setting.check_bg|date_format:"%Y-%m-%d %H:%M:%S"}></dd>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTCHKED}></dt>
+<dd><{$election_setting.check_ed|date_format:"%Y-%m-%d %H:%M:%S"}></dd>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTVTBG}></dt>
+<dd><{$election_setting.vote_bg|date_format:"%Y-%m-%d %H:%M:%S"}></dd>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTVTED}></dt>
+<dd><{$election_setting.vote_ed|date_format:"%Y-%m-%d %H:%M:%S"}></dd>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTBLTBG}></dt>
+<dd><{$election_setting.bulletin_bg|date_format:"%Y-%m-%d %H:%M:%S"}></dd>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTTYPES}></dt>
+<dd>
+<ul>
+<{foreach from=$election_setting.tpcdd item=tp key=tpid}>
+<li>
+<{if $page.commission && !$page.packaged}>
+[<a href="election_tpcdd.php?action=tp_modify&elid=<{$page.elid}>&tpid=<{$tpid}>" title="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MODIFY}>"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_MODIFY}></a>][<a href="election_delete.php?action=tp&elid=<{$page.elid}>&tpid=<{$tpid}>" title="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DELETE}>"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_DELETE}></a>]&nbsp;
+<{/if}>
+<{$tp.types}>
+<ul>
+<{foreach from=$tp.candidate item=cdd key=cddid}>
+<li>
+<{if $page.commission && !$page.packaged}>
+[<a href="election_tpcdd.php?action=cdd_modify&elid=<{$page.elid}>&cddid=<{$cdd.id}>" title="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MODIFY}>"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_MODIFY}></a>][<a href="election_delete.php?action=cdd&elid=<{$page.elid}>&cddid=<{$cdd.id}>" title="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DELETE}>"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_DELETE}></a>]&nbsp;
+<{/if}>
+<{$cdd.nb}>.&nbsp;<{$cdd.name}><br /><img src="<{$cdd.photo_url}>" alt="photo: <{$cdd.name}>" /></li>
+<{/foreach}>
+</ul>
+</li>
+<{/foreach}>
+</ul>
+</dd>
+
+<{if !$page.packaged}>
+
+<{if $page.commission || $page.period.check}>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTGDCL}>(<{$smarty.const._MI_VOTEOL_ACTSETTING_TITLE_CHECK}>)</dt>
+<dd>
+<ul>
+<{foreach from=$election_setting.gdcl item=gd key=gdid}>
+<li>
+<{$gdid}>&nbsp;<{$smarty.const._MI_VOTEOL_ELCTTPCDD_GRADE}>
+<ul>
+<{foreach from=$gd item=cl key=clid}>
+<li>
+<{if $page.commission}>
+[<a href="election_tpcdd.php?action=gdcl_modify&elid=<{$page.elid}>&gcid=<{$cl.id}>" title="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_MODIFY}>"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_MODIFY}></a>][<a href="election_delete.php?action=gdcl&elid=<{$page.elid}>&gcid=<{$cl.id}>" title="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_DELETE}>"><{$smarty.const._MI_VOTEOL_ELCTMANAGE_DELETE}></a>]&nbsp;
+<{/if}>
+<a href="account_setting.php?<{if $page.commission}>commission=1&<{/if}>elid=<{$page.elid}>&gcid=<{$cl.id}>" title="<{$clid}><{$smarty.const._MI_VOTEOL_ELCTTPCDD_CLASS}>"><{$clid}>&nbsp;<{$smarty.const._MI_VOTEOL_ELCTTPCDD_CLASS}>(<{$cl.uname}>)</a></li>
+<{/foreach}>
+</ul>
+</li>
+<{/foreach}>
+</ul>
+</dd>
+<{/if}>
+
+<{if !$page.commission && $page.period.vote}>
+<dt><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTGDCL}>(<{$smarty.const._MI_VOTEOL_ELCT_GDCLVOTE}>)</dt>
+<dd>
+<ul>
+<{foreach from=$election_setting.gdcl item=gd key=gdid}>
+<li>
+<{$gdid}>&nbsp;<{$smarty.const._MI_VOTEOL_ELCTTPCDD_GRADE}>
+<ul>
+<{foreach from=$gd item=cl key=clid}>
+<li><a href="vote_gdcl.php?elid=<{$page.elid}>&gcid=<{$cl.id}>" title="<{$clid}><{$smarty.const._MI_VOTEOL_ELCTTPCDD_CLASS}>"><{$clid}>&nbsp;<{$smarty.const._MI_VOTEOL_ELCTTPCDD_CLASS}>&nbsp;(<{$cl.uname}>)</a></li>
+<{/foreach}>
+</ul>
+</li>
+<{/foreach}>
+</ul>
+</dd>
+<{/if}>
+
+<{/if}>
+
+</dl>
+
+<{if $page.commission && !$page.packaged}>
+<form method="post" action="election_passwd.php?elid=<{$page.elid}>">
+<fieldset>
+<legend>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_PASSWD}>
+</legend>
+<p><{$smarty.const._MI_VOTEOL_ELCTMANAGE_PASSWD_DESC}></p>
+<input type="submit" value="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_PASSWD}>" />
+</fieldset>
+</form>
+<form method="post" action="election_delete.php?action=pk&elid=<{$page.elid}>">
+<fieldset>
+<legend>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTPACKAGE}>
+</legend>
+<p><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTPACKAGE_DESC}></p>
+<input type="submit" value="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTPACKAGE}>" />
+</fieldset>
+</form>
+<form method="post" action="election_delete.php?action=el&elid=<{$page.elid}>">
+<fieldset>
+<legend>
+<{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTDELETE}>
+</legend>
+<p><{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTDELETE_DESC}></p>
+<input type="submit" value="<{$smarty.const._MI_VOTEOL_ELCTMANAGE_ELCTDELETE}>" />
+</fieldset>
+</form>
+<{/if}>
+
+</div>
+<hr />
+</div>

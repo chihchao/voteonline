@@ -1,0 +1,58 @@
+<div id="voteonline">
+<hr />
+
+<ul id="route">
+<{foreach from=$route item=node name=route}>
+	<li <{if $smarty.foreach.route.first}>id="route0"<{else}>class="route1"<{/if}>><a href="<{$node.path}>" title="<{$node.title}>"><{$node.title}></a></li>
+<{/foreach}>
+</ul>
+
+<ul id="sublink">
+<{foreach from=$sublink item=link name=sublink}>
+	<li><a href="<{$link.path}>" title="<{$link.title}>"><{$link.title}></a></li>
+<{/foreach}>
+</ul>
+
+<hr />
+
+<h2><{$module.name}></h2>
+
+<h3><{$page.title}></h3>
+
+<div id="contents_content">
+
+<form method="post" action="vote.php?elid=<{$page.elid}>&gcid=<{$page.gcid}>">
+<fieldset>
+<legend>
+<{$smarty.const._MI_VOTEOL_VTGDCL_FORM_TITLE}>
+</legend>
+
+<p class="attention"><{$smarty.const._MI_VOTEOL_VTGDCL_FORM_DESC}></p>
+<dl>
+<dt><{$smarty.const._MI_VOTEOL_VTGDCL_FORM_PASSWD}></dt>
+<dd><input type="password" id="passwd" class="inputwidthst" name="passwd" /></dd>
+<dt><{$smarty.const._MI_VOTEOL_VTGDCL_FORM_NB}></dt>
+<dd>
+<ul id="voter_1">
+<{foreach from=$account item=act name=acts}>
+<li>
+<{if $act.status}>
+<input type="radio" name="actid" value="<{$act.id}>" /><{$act.nb}>&nbsp;<{$smarty.const._MI_VOTEOL_ACTSETTING_NB}>
+<{else}>
+<strike><{$act.nb}>&nbsp;<{$smarty.const._MI_VOTEOL_ACTSETTING_NB}></strike>
+<{/if}>
+</li>
+<{if $smarty.foreach.acts.iteration == $page.std_numbers_helf}></ul><ul id="voter_2"><{/if}>
+<{/foreach}>
+</ul>
+</dd>
+</dl>
+<div class="clear"></div>
+<input type="submit" value="<{$smarty.const._SEND}>" />
+
+</fieldset>
+</form>
+
+</div>
+<hr />
+</div>

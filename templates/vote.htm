@@ -1,0 +1,64 @@
+<div id="voteonline">
+<hr />
+
+<ul id="route">
+<{foreach from=$route item=node name=route}>
+	<li <{if $smarty.foreach.route.first}>id="route0"<{else}>class="route1"<{/if}>><a href="<{$node.path}>" title="<{$node.title}>"><{$node.title}></a></li>
+<{/foreach}>
+</ul>
+
+<ul id="sublink">
+<{foreach from=$sublink item=link name=sublink}>
+	<li><a href="<{$link.path}>" title="<{$link.title}>"><{$link.title}></a></li>
+<{/foreach}>
+</ul>
+
+<hr />
+
+<h2><{$module.name}></h2>
+
+<h3><{$page.title}></h3>
+
+<form method="post" action="<{$smarty.server.REQUEST_URI}>">
+<fieldset>
+<legend>
+<{$page.elct_title}><{$smarty.const._MI_VOTEOL_VT_TITLE}>
+</legend>
+
+<table id="vote">
+<tr>
+<{foreach from=$election_setting.tpcdd item=tp name=types key=tpid}>
+<td>
+<table class="vote_types">
+<caption><{$tp.types}></caption>
+<{foreach from=$tp.candidate item=cdd key=cddid}>
+<tr>
+<td class="nowrap">
+<input type="radio" name="<{$tpid}>" value="<{$cdd.id}>" />
+<{$cdd.nb}>&nbsp;<{$smarty.const._MI_VOTEOL_ACTSETTING_NB}>
+</td>
+<td class="tdmain">
+<{$cdd.name}><br />
+<img src="<{$cdd.photo_url}>" alt="photo: <{$cdd.name}>" />
+</td>
+</tr>
+<{/foreach}>
+</table>
+</td>
+<{/foreach}>
+</tr>
+</table>
+
+<input type="hidden" name="actid" value="<{$smarty.post.actid}>" />
+<input type="hidden" name="passwd" value="<{$smarty.post.passwd}>" />
+<input type="hidden" name="submit" value="1" />
+<input TYPE="submit" value="<{$smarty.const._MI_VOTEOL_VT_SUBMIT}>" />
+<input TYPE="reset" value="<{$smarty.const._MI_VOTEOL_VT_RESET}>" />
+
+
+</fieldset>
+</form>
+
+
+<hr />
+</div>

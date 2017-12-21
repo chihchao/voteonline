@@ -1,0 +1,32 @@
+<div id="voteonline">
+<hr />
+
+<ul id="route">
+<{foreach from=$route item=node name=route}>
+	<li <{if $smarty.foreach.route.first}>id="route0"<{else}>class="route1"<{/if}>><a href="<{$node.path}>" title="<{$node.title}>"><{$node.title}></a></li>
+<{/foreach}>
+</ul>
+
+<ul id="sublink">
+<{foreach from=$sublink item=link name=sublink}>
+	<li><a href="<{$link.path}>" title="<{$link.title}>"><{$link.title}></a></li>
+<{/foreach}>
+</ul>
+
+<hr />
+
+<h2><{$module.name}></h2>
+
+<h3><{$page.title}></h3>
+
+<p id="system_time"><{$smarty.const._MI_VOTEOL_INDEX_SYSTEMTIME}><{$page.system_time}></p>
+
+<dl>
+<{foreach from=$elections item=election name=elections}>
+<dt><a href="election.php?<{if $page.commission}>commission=1&<{/if}>elid=<{$election.id}>" title="<{$election.title}>"><{$election.title}></a></dt>
+<dd><{$election.bulletin}></dd>
+<{/foreach}>
+</dl>
+
+<hr />
+</div>

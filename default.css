@@ -1,0 +1,93 @@
+#voteonline { position: relative; }
+#voteonline hr { display: none; }
+#voteonline h2 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0 5px 0 5px;
+	font-size: x-small;
+	font-weight: bold;
+	border: 1px solid #069;
+	background: #FFF;
+}
+#voteonline h3 {
+	margin: 0 0 30px 0;
+	padding: 10px;
+	font-size: medium;
+	font-weight: bold;
+	background: #069;
+	color: #FFF;
+}
+#voteonline h4 {
+	margin: 0 0 10px 0;
+	padding: 0 0 0 15px;
+	font-weight: bold;
+	background: url(images/icon_h4.gif) no-repeat 0 50%;
+}
+
+#voteonline table { margin: 0 0 10px 0; border-collapse: collapse; width: 100%; border-top: 1px solid #069; border-left: 1px solid #069; }
+#voteonline table td, th { vertical-align: top; padding: 5px; border-bottom: 1px solid #069; border-right: 1px solid #069; }
+#voteonline caption { font-weight: bold; text-align: left; }
+#voteonline th { text-align: center; background: #069; color: #fff; }
+#voteonline tfoot { background: #69C; }
+
+#voteonline form { margin: 0 0 10px 0; padding: 5px; text-align: left; }
+#voteonline fieldset { margin: 0; padding: 5px; }
+#voteonline legend { margin: 0; padding: 0 10px 0 10px; font-weight: bold; }
+#voteonline form p { font-weight: bold; color: #F00; }
+.inputwidthst { width: 50px; }
+.inputwidthln { width: 100px; }
+
+#voteonline dl { margin: 0; padding: 0; }
+#voteonline dt {
+	margin: 0;
+	padding: 5px 5px 5px 20px;
+	font-weight: bold;
+	background: url(images/icon_dt.gif) no-repeat 0 50%;
+}
+#voteonline dd {
+	margin: 0 0 5px 0;
+	padding: 5px 5px 5px 20px;
+}
+
+#route { list-style: none; margin: 0; padding: 5px 0 5px 0; }
+#route li { margin: 0; padding: 0; display: inline; }
+#route a { margin: 0; padding: 5px 5px 5px 10px; }
+#route0 { background: url(images/icon_route0.gif) no-repeat 0 50%; }
+.route1 { background: url(images/icon_route1.gif) no-repeat 0 50%; }
+
+#sublink { margin: 0; background: #69C; padding: 5px 0 5px 5px; }
+#sublink li { margin: 0; padding: 0; display: inline; list-style: none; }
+#sublink a { margin: 0; padding: 0 5px; color: #FFF; border-right: 3px solid #FFF; }
+#sublink a:hover, #sublink a:active { color:FFC ; }
+
+.nowrap { white-space: nowrap; }
+.tdmain { width: 100%; }
+.clear { clear: both; }
+
+#system_time {
+	margin: -30px 0 10px 0;
+	padding: 5px;
+}
+
+#contents_content ul { margin: 0; padding: 0; list-style: none; }
+
+#voter_1 { float: left; width: 45%;}
+#voter_2 { float: right; width: 45%;}
+
+#voteonline form table, #voteonline form td, #voteonline form th { border: 0; }
+#voteonline form td { padding: 5px; }
+#voteonline form table tr td table { border-top: 1px solid #069; border-left: 1px solid #069; }
+#voteonline form table tr td table td, th { border-bottom: 1px solid #069; border-right: 1px solid #069; }
+
+#packaged_desc { margin: 0 0 10px 0; padding: 5px 5px 5px 15px; color: #F00; font-weight: bold; text-decoration: underline; background: url(images/icon_h4.gif) no-repeat 0 50%; }
+#bulletin {
+	margin: 0 0 10px 0;
+	padding: 5px;
+	border: 1px solid #069;
+	background: #FFC;
+	font-size: medium;
+	font-weight: bold;
+	color: #069;
+}
